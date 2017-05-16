@@ -3,9 +3,9 @@
 
 from speech_recognizer import SpeechRecognizer
 import multiprocessing
-from weatcher import Weatcher
 from speech import Speech
 from autopilot import RaspieAutopilotProcess
+# from weatcher import Weatcher
 
 
 class VoiceControl(multiprocessing.Process):
@@ -15,7 +15,8 @@ class VoiceControl(multiprocessing.Process):
         self.exit = multiprocessing.Event()
     
     def command_weatcher(self):
-        weather = Weather().check_weather()
+        weather = Weather()
+        weatcherData = weatcher.check_weather()
         text = weather['forecast']['txt_forecast']['forecastday'][0]['fcttext_metric']
         speech = Speech()
         speech.create_voice(text)
