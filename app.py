@@ -3,9 +3,9 @@
 
 from speech_recognizer import SpeechRecognizer
 import multiprocessing
+from weatcher import Weatcher
 from speech import Speech
 from autopilot import RaspieAutopilotProcess
-from weatcher import Weatcher
 
 
 class VoiceControl(multiprocessing.Process):
