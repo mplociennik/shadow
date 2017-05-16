@@ -5,7 +5,7 @@ from speech_recognizer import SpeechRecognizer
 import multiprocessing
 from speech import Speech
 from autopilot import RaspieAutopilotProcess
-#from weatcher import Weatcher
+from weatcher import Weatcher
 
 
 class VoiceControl(multiprocessing.Process):
@@ -70,7 +70,7 @@ class VoiceControl(multiprocessing.Process):
         print "Voice listening stoped!"
 
     def terminate(self):
-        print "Terminating autopilot..."
+        print "Terminating voice control..."
         self.exit.set() 
             
 if __name__ == '__main__':
