@@ -3,7 +3,7 @@
 import urllib, json
 from speech import Speech
 
-class Weather:
+class Weather():
 
     API_KEY = '01daaa0160eb1f77'
     LANG = 'US'
