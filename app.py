@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from speech_recognizer import SpeechRecognizer
 import multiprocessing
+import psycopg2
+from speech_recognizer import SpeechRecognizer
 from speech import Speech
 from autopilot import RaspieAutopilotProcess
 # from weatcher import Weatcher
@@ -13,6 +14,15 @@ class VoiceControl(multiprocessing.Process):
     def __init__(self, ):
         multiprocessing.Process.__init__(self)
         self.exit = multiprocessing.Event()
+        cur.execute("SELECT * FROM test;")
+
+    def find_command(self, text):
+        conn = psycopg2.connect("dbname=test user=postgres")
+        cur = conn.cursor()
+        cur.fetchone()
+        conn.commit()
+        cur.close()
+        conn.close()
     
     def command_weatcher(self):
         weather = Weather()
